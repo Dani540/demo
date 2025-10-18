@@ -1,0 +1,49 @@
+---
+// Header de navegación
+import CartIcon from './islands/CartIcon.svelte';
+---
+<header class="header">
+  <nav>
+    <a href="/" class="logo">Artesanías</a>
+  <a href="/encargo" class="encargo-btn">Hacer Pedido</a>
+    <CartIcon client:load />
+  </nav>
+  <style>
+    .header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem 0;
+      box-shadow: 0 2px 8px #0001;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+    a {
+      margin-left: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: var(--accent);
+    }
+    .encargo-btn {
+      background: #fff;
+      color: var(--primary); /* show text like hover color */
+      font-weight:600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      text-decoration: none;
+    }
+  </style>
+</header>

@@ -1,0 +1,28 @@
+---
+import ProductCard from './ProductCard.astro';
+import products from '../content/products/products.json';
+---
+<section class="catalog">
+  {products.length === 0 ? (
+    <p>No hay productos disponibles.</p>
+  ) : (
+    <div class="catalog-grid">
+      {products.map(product => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+  )}
+  <style>
+    .catalog {
+      width: 100%;
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      grid-auto-rows: 1fr;
+    }
+    .catalog-grid > * { align-self: stretch; }
+  </style>
+</section>

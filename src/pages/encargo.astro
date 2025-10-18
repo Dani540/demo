@@ -1,0 +1,11 @@
+---
+// Página de encargos especiales
+import Layout from '../layouts/Layout.astro';
+import EncargoForm from '../components/islands/EncargoForm.svelte';
+---
+
+<Layout title="Haz tu Pedido">
+  <h1>Pedido</h1>
+  <p>Selecciona los productos que quieres cotizar y envíanos tu solicitud.</p>
+  <EncargoForm client:load />
+</Layout>

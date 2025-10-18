@@ -1,0 +1,65 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Té Tetera",
+    "description": "Porta té en forma de tetera de madera.",
+    "price": 1000,
+    "minQuantity": 20,
+    "image": "src/assets/te_tetera.jpg",
+    "galleryImages": ["src/assets/te_tetera.jpg"]
+  },
+  {
+    "id": "prod-002",
+    "name": "Azúcar y Té Doble",
+    "description": "Azucarero y Té de madera.",
+    "price": 1500,
+    "minQuantity": 10,
+    "image": "src/assets/doble_azucar_te.jpg",
+    "galleryImages": ["/assets/doble_azucar_te.jpg"]
+  },
+  {
+    "id": "prod-003",
+    "name": "Azucarero y yerbero de madera",
+    "description": "Azucarero y yerbero de madera.",
+    "price": 1000,
+    "minQuantity": 20,
+    "image": "src/assets/doble_azucar_yerba.jpg",
+    "galleryImages": ["/assets/doble_azucar_yerba.jpg"]
+  },
+  {
+    "id": "prod-004",
+    "name": "Té Rejilla",
+    "description": "Té rejilla.",
+    "price": 300,
+    "minQuantity": 30,
+    "image": "src/assets/te_rejilla.jpg",
+    "galleryImages": ["/assets/te_rejilla.jpg"]
+  },
+  {
+    "id": "prod-005",
+    "name": "Té Tetera",
+    "description": "Té simple con forma de tetera de madera.",
+    "price": 300,
+    "minQuantity": 30,
+    "image": "src/assets/te_tetera.jpg",
+    "galleryImages": ["/assets/te_tetera.jpg"]
+  },
+  {
+    "id": "prod-006",
+    "name": "Servilletero",
+    "description": "Servilletero de madera.",
+    "price": 300,
+    "minQuantity": 30,
+    "image": "src/assets/servilletero.jpg",
+    "galleryImages": ["/assets/servilletero.jpg"]
+  },
+  {
+    "id": "prod-007",
+    "name": "Porta cubiertos",
+    "description": "Portador de cubiertos de madera.",
+    "price": 1300,
+    "minQuantity": 30,
+    "image": "src/assets/porta_cubiertos.jpg",
+    "galleryImages": ["/assets/porta_cubiertos.jpg"]
+  }
+]

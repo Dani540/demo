@@ -1,0 +1,85 @@
+---
+const { product } = Astro.props;
+---
+<div class="product-trigger card"
+     data-id={product?.id}
+     data-name={product?.name}
+     data-description={product?.description}
+     data-price={product?.price}
+     data-images={JSON.stringify(product?.galleryImages || [])}
+     data-min-quantity={product?.minQuantity}
+     tabindex="0"
+     role="button"
+>
+  <div class="card-media">
+    <img src={product?.image} alt={product?.name} class="product-img" />
+  </div>
+  <div class="card-content">
+    <h3>{product?.name}</h3>
+    <p class="desc">{product?.description}</p>
+    <div class="price-row">
+      <span class="price">${product?.price}</span>
+      <span class="min-qty">Mín. {product?.minQuantity}</span>
+    </div>
+  </div>
+  <style>
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 2px 12px #0002;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+      overflow: hidden;
+    }
+    .card:hover {
+      box-shadow: 0 4px 24px #0003;
+      transform: translateY(-4px) scale(1.03);
+    }
+    /* Media box with fixed aspect ratio (mobile-friendly) */
+    .card-media {
+      aspect-ratio: 4 / 5;
+      background: #faf6f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .card-content {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+    }
+    .desc {
+      color: #7c4d2a;
+      font-size: 0.95rem;
+      margin: 0.5rem 0 1rem 0;
+      min-height: 2.5em;
+    }
+    .price-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+    .price {
+      color: var(--primary);
+      font-weight: bold;
+    }
+    .min-qty {
+      color: var(--accent);
+      font-size: 0.95em;
+    }
+  </style>
+</div>
