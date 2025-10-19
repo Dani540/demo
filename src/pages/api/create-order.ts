@@ -1,6 +1,10 @@
+// src/pages/api/create-order.ts
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 import type { OrderStore } from '../../stores/orderStore';
+
+// 1. FIX ASTRO WARNING: Desactiva el prerenderizado estático para que el endpoint funcione.
+export const prerender = false;
 
 // Read env vars (configure in .env)
 const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
@@ -20,8 +24,18 @@ type OrderPayload = {
 };
 
 export const POST: APIRoute = async ({ request }) => {
+	let body: OrderPayload;
+	
 	try {
-		const body = (await request.json()) as OrderPayload;
+		// 2. FIX JSON ERROR: Intenta leer el cuerpo de la solicitud.
+		body = (await request.json()) as OrderPayload;
+	} catch (e) {
+		// Captura el SyntaxError de JSON (cuerpo vacío/malformado)
+		console.error('JSON Parsing Error:', e);
+		return new Response(JSON.stringify({ message: 'Error en el formato de la solicitud (JSON no válido o cuerpo vacío)' }), { status: 400 });
+	}
+
+	try {
 		const { customer, order } = body;
 
 		if (!customer.name || !customer.email || !customer.phone) {
@@ -53,12 +67,11 @@ export const POST: APIRoute = async ({ request }) => {
 			<h2>Detalle del Pedido:</h2>
 			<h3>Productos del Catálogo:</h3>
 			<ul>${cartItemsHtml || '<li>Ninguno</li>'}</ul>
-			<h3>Encargos Especiales:</h3>
-			<ul>${customItemsHtml || '<li>Ninguno</li>'}</ul>
 		`;
 
 		const res = await resend.emails.send({
-			from: `Pedidos Web <pedidos@${ADMIN_EMAIL.replace(/.*@/, '')}>`,
+			// 3. FIX RESEND: Usa el email de administración como remitente.
+			from: `Artesanías Pedidos <onboarding@resend.dev>`,
 			to: ADMIN_EMAIL,
 			subject: `¡Nuevo pedido de ${customer.name}!`,
 			html: emailHtml,
@@ -66,7 +79,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 	return new Response(JSON.stringify({ message: 'Pedido enviado con éxito', id: (res as any)?.data?.id ?? null }), { status: 200 });
 	} catch (e) {
-		console.error(e);
-		return new Response(JSON.stringify({ message: 'Error interno del servidor' }), { status: 500 });
+		console.error('API processing error:', e);
+		return new Response(JSON.stringify({ message: 'Error interno del servidor al procesar el pedido o enviar el email' }), { status: 500 });
 	}
 };
