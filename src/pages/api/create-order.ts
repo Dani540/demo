@@ -8,7 +8,8 @@ export const prerender = false;
 
 // Read env vars (configure in .env)
 const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
-const ADMIN_EMAIL = import.meta.env.ADMIN_EMAIL || 'tu-email-de-admin@example.com';
+const ADMIN_EMAIL = import.meta.env.ADMIN_EMAIL || null;
+const SECOND_ADMIN_EMAIL = import.meta.env.SECOND_ADMIN_EMAIL || null;
 
 const resend = new Resend(RESEND_API_KEY);
 
@@ -68,6 +69,8 @@ export const POST: APIRoute = async ({ request }) => {
 			<h3>Productos del Catálogo:</h3>
 			<ul>${cartItemsHtml || '<li>Ninguno</li>'}</ul>
 		`;
+
+		const emails: string[] = [ADMIN_EMAIL, SECOND_ADMIN_EMAIL];
 
 		const res = await resend.emails.send({
 			// 3. FIX RESEND: Usa el email de administración como remitente.
