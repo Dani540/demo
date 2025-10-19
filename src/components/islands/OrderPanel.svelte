@@ -104,7 +104,7 @@
           <button class="primary" on:click={handleGoPedido}
             >Finalizar Pedido</button
           >
-          <button class="cancel" on:click={clearOrder}>Cancelar pedido</button>
+          <button class="secondary" on:click={clearOrder}>Cancelar pedido</button>
         </div>
       </div>
     </div>
@@ -194,6 +194,7 @@
   .primary:hover,
   .primary:focus {
     filter: brightness(0.95);
+    cursor: pointer;
   }
   .secondary {
     background: transparent;
@@ -205,6 +206,7 @@
   .secondary:hover,
   .secondary:focus {
     background: rgba(124, 77, 42, 0.06);
+    cursor: pointer;
   }
   .close {
     background: transparent;
@@ -235,17 +237,6 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 0.5rem;
-  }
-  .cancel {
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    padding: 0.5rem 0.8rem;
-    border-radius: 0.5rem;
-  }
-  .cancel:hover,
-  .cancel:focus {
-    background: rgba(124, 77, 42, 0.04);
   }
   .small {
     font-size: 0.85rem;
