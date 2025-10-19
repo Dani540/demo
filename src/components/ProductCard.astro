@@ -1,18 +1,31 @@
 ---
+// 1. Importar el componente 'Image' de Astro
+import { Image } from 'astro:assets';
+
 const { product } = Astro.props;
+
+// 2. 'product.galleryImages' ahora es un array de strings (ej. ['/assets/img.hash.webp'])
+//    JSON.stringify funciona perfectamente aquí.
+const galleryJson = JSON.stringify(product?.galleryImages || []);
 ---
 <div class="product-trigger card"
      data-id={product?.id}
      data-name={product?.name}
      data-description={product?.description}
      data-price={product?.price}
-     data-images={JSON.stringify(product?.galleryImages || [])}
-     data-min-quantity={product?.minQuantity}
+     data-images={galleryJson} data-min-quantity={product?.minQuantity}
      tabindex="0"
      role="button"
 >
   <div class="card-media">
-    <img src={product?.image} alt={product?.name} class="product-img" />
+    <Image 
+      src={product.image} 
+      alt={product.name} 
+      class="product-img"
+      widths={[250, 400]}
+      sizes="(max-width: 768px) 400px, 250px"
+      format="webp" 
+    />
   </div>
   <div class="card-content">
     <h3>{product?.name}</h3>
@@ -40,7 +53,6 @@ const { product } = Astro.props;
       box-shadow: 0 4px 24px #0003;
       transform: translateY(-4px) scale(1.03);
     }
-    /* Media box with fixed aspect ratio (mobile-friendly) */
     .card-media {
       aspect-ratio: 4 / 5;
       background: #faf6f4;

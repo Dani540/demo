@@ -1,12 +1,21 @@
-[
+// Imports
+import imgTetera from '@/assets/te_tetera.jpg';
+import imgDobleAzucarTe from '@/assets/doble_azucar_te.jpg';
+import imgDobleAzucarYerba from '@/assets/doble_azucar_yerba.jpg';
+import imgTeRejilla from '@/assets/te_rejilla.jpg';
+import imgServilletero from '@/assets/servilletero.jpg';
+import imgPortaCubiertos from '@/assets/porta_cubiertos.jpg';
+
+// Exports
+export default [
   {
     "id": "prod-001",
     "name": "Té Tetera",
     "description": "Porta té en forma de tetera de madera.",
     "price": 1000,
     "minQuantity": 20,
-    "image": "src/assets/te_tetera.jpg",
-    "galleryImages": ["src/assets/te_tetera.jpg"]
+    "image": imgTetera, // Pasamos el objeto de imagen importado
+    "galleryImages": [imgTetera.src] // Pasamos el string de la ruta ya procesada
   },
   {
     "id": "prod-002",
@@ -14,8 +23,8 @@
     "description": "Azucarero y Té de madera.",
     "price": 1500,
     "minQuantity": 10,
-    "image": "src/assets/doble_azucar_te.jpg",
-    "galleryImages": ["/assets/doble_azucar_te.jpg"]
+    "image": imgDobleAzucarTe,
+    "galleryImages": [imgDobleAzucarTe.src]
   },
   {
     "id": "prod-003",
@@ -23,8 +32,8 @@
     "description": "Azucarero y yerbero de madera.",
     "price": 1000,
     "minQuantity": 20,
-    "image": "src/assets/doble_azucar_yerba.jpg",
-    "galleryImages": ["/assets/doble_azucar_yerba.jpg"]
+    "image": imgDobleAzucarYerba,
+    "galleryImages": [imgDobleAzucarYerba.src]
   },
   {
     "id": "prod-004",
@@ -32,17 +41,17 @@
     "description": "Té rejilla.",
     "price": 300,
     "minQuantity": 30,
-    "image": "src/assets/te_rejilla.jpg",
-    "galleryImages": ["/assets/te_rejilla.jpg"]
+    "image": imgTeRejilla,
+    "galleryImages": [imgTeRejilla.src]
   },
   {
     "id": "prod-005",
-    "name": "Té Tetera",
+    "name": "Té Tetera", // Producto prod-005
     "description": "Té simple con forma de tetera de madera.",
     "price": 300,
     "minQuantity": 30,
-    "image": "src/assets/te_tetera.jpg",
-    "galleryImages": ["/assets/te_tetera.jpg"]
+    "image": imgTetera, // Re-usamos la imagen
+    "galleryImages": [imgTetera.src]
   },
   {
     "id": "prod-006",
@@ -50,8 +59,8 @@
     "description": "Servilletero de madera.",
     "price": 300,
     "minQuantity": 30,
-    "image": "src/assets/servilletero.jpg",
-    "galleryImages": ["/assets/servilletero.jpg"]
+    "image": imgServilletero,
+    "galleryImages": [imgServilletero.src]
   },
   {
     "id": "prod-007",
@@ -59,7 +68,7 @@
     "description": "Portador de cubiertos de madera.",
     "price": 1300,
     "minQuantity": 30,
-    "image": "src/assets/porta_cubiertos.jpg",
-    "galleryImages": ["/assets/porta_cubiertos.jpg"]
+    "image": imgPortaCubiertos,
+    "galleryImages": [imgPortaCubiertos.src]
   }
 ]
