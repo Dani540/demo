@@ -28,7 +28,7 @@ export default [
   },
   {
     "id": "prod-003",
-    "name": "Azucarero y yerbero de madera",
+    "name": "Azucarero y yerbero",
     "description": "Azucarero y yerbero de madera.",
     "price": 1000,
     "minQuantity": 20,

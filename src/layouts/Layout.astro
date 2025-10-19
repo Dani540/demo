@@ -1,5 +1,4 @@
 ---
-// Layout base
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProductModal from '../components/islands/ProductModal.svelte';
@@ -9,61 +8,83 @@ import OrderPanel from '../components/islands/OrderPanel.svelte';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{Astro.props.title || 'Artesanías'}</title>
+    <title>{Astro.props.title ||
+'Artesanías'}</title>
     <style>
       :root {
         --primary: #7c4d2a;
-        --accent: #e0b07a;
+--accent: #e0b07a;
         --bg: #f9f6f2;
         --text: #2d1b0e;
       }
       html, body {
         margin: 0;
-        padding: 0;
+padding: 0;
         background: var(--bg);
         color: var(--text);
         font-family: 'Segoe UI', 'Arial', sans-serif;
         min-height: 100vh;
-      }
+}
       main {
         max-width: 1200px;
         margin: 2rem auto;
-        padding: 1rem;
+padding: 1rem;
       }
       a {
         color: var(--primary);
-        text-decoration: none;
+text-decoration: none;
+        transition: color 0.2s ease-out; /* Juicy */
       }
-      a:hover {
+      a:hover, a:focus {
         text-decoration: underline;
+      color: var(--accent);
       }
-      /* Global form/button styles */
+      /* --- ESTILOS AÑADIDOS/MODIFICADOS --- */
       input, select, textarea {
         font-family: inherit;
-        font-size: 1rem;
+font-size: 1rem;
         padding: 0.6rem 0.75rem;
         border-radius: 0.6rem;
         border: 1px solid #e6dfd8;
         background: #fff;
         color: var(--text);
         box-shadow: none;
+      transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out; /* Juicy */
       }
-      button { font-family: inherit; }
+      input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(124, 77, 42, 0.15);
+      }
+      button { 
+        font-family: inherit;
+      cursor: pointer;
+        transition: all 0.2s ease-out; /* Juicy */
+      }
       .primary {
         background: var(--primary);
         color: #fff;
-        border: none;
+border: none;
         padding: 0.6rem 1rem;
         border-radius: 0.6rem;
         cursor: pointer;
       }
+      .primary:hover, .primary:focus {
+        filter: brightness(1.1);
+        transform: scale(1.02);
+        box-shadow: 0 2px 8px #0002;
+      }
       .secondary {
         background: transparent;
-        color: var(--primary);
+color: var(--primary);
         border: 1px solid var(--primary);
         padding: 0.5rem 0.8rem;
         border-radius: 0.6rem;
         cursor: pointer;
+}
+      .secondary:hover, .secondary:focus {
+        background: rgba(124, 77, 42, 0.08);
+        transform: scale(1.02);
       }
     </style>
   </head>
@@ -73,7 +94,6 @@ import OrderPanel from '../components/islands/OrderPanel.svelte';
       <slot />
     </main>
     <Footer />
-  <!-- Isla global del modal de producto -->
     <ProductModal client:load />
     <OrderPanel client:load />
   </body>

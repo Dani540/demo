@@ -36,6 +36,7 @@ $: if (totalItems > prevTotal) {
   margin-left: 2rem;
   color: #fff;
   font-weight: 600; /* match logo weight */
+  cursor: pointer;
 }
 .cart-badge {
   position: absolute;

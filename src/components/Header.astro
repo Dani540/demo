@@ -1,12 +1,14 @@
 ---
-// Header de navegación
-import CartIcon from './islands/CartIcon.svelte';
+import CartIcon from "./islands/CartIcon.svelte";
 ---
+
 <header class="header">
   <nav>
     <a href="/" class="logo">Artesanías</a>
-  <a href="/encargo" class="encargo-btn">Hacer Pedido</a>
-    <CartIcon client:load />
+    <div class="nav-links">
+      <a href="/encargo" class="encargo-btn">Hacer Pedido</a>
+      <CartIcon client:load />
+    </div>
   </nav>
   <style>
     .header {
@@ -14,6 +16,9 @@ import CartIcon from './islands/CartIcon.svelte';
       color: #fff;
       padding: 1rem 0;
       box-shadow: 0 2px 8px #0001;
+      position: sticky; /* Opcional: para que se mantenga visible */
+      top: 0;
+      z-index: 100;
     }
     nav {
       display: flex;
@@ -27,23 +32,51 @@ import CartIcon from './islands/CartIcon.svelte';
       font-weight: bold;
       font-size: 1.5rem;
       color: #fff;
+      transition: transform 0.2s ease-out; /* Juicy */
+      cursor: pointer;
     }
+    .logo:hover,
+    .logo:focus {
+      transform: scale(1.03);
+      color: #fff; /* Evita que el 'a' global lo ponga 'accent' */
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem; /* Espacio entre el botón y el carrito */
+    }
+
     a {
       margin-left: 1.5rem;
       color: #fff;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.2s ease-out; /* Transición global de Layout.astro */
     }
     a:hover {
       color: var(--accent);
     }
+
+    /* --- ESTILOS MODIFICADOS --- */
     .encargo-btn {
       background: #fff;
-      color: var(--primary); /* show text like hover color */
-      font-weight:600;
+      color: var(--primary);
+      font-weight: 600;
       padding: 0.4rem 0.8rem;
       border-radius: 0.4rem;
       text-decoration: none;
+      transition: all 0.2s ease-out; /* Juicy */
+      margin-left: 0; /* Resetea el 'a' global */
+    }
+    .encargo-btn:hover,
+    .encargo-btn:focus {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.05);
+      text-decoration: none;
+      box-shadow: 0 2px 8px #0003;
     }
   </style>
 </header>
